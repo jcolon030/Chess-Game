@@ -1,2 +1,2 @@
-# Chess-Game
-With Engine 
+# | Chess-Game |
+1. Fully Python
