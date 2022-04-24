@@ -1,5 +1,37 @@
-from classes import WhitePawn
 from in_game_settings import classes
+#from classes import WhitePawn
+from test_code import WhitePawn
+# Classes for each of the pieces
+class WhitePawn():
+    def __init__(self, gameboard, position, end_position):
+        self.gameboard = gameboard
+        self.s = position
+        self.d = end_position
+
+    def double_space(self):
+        pass
+
+    def single_space(self):
+        LETTERS = 'ABCDEFGH'
+
+        source = self.gameboard[8 - int(self.s[1])][LETTERS.index(self.s[0])]
+        destination = self.gameboard[8 - int(self.d[1])][LETTERS.index(self.d[0])]
+
+        source.replace(source, destination)
+        destination.replace(destination, source)
+
+        return self.gameboard
+
+        
+
+    def attack_left(self):
+        pass
+
+    def attack_right(self):
+        pass
+
+    def remove(self):
+        pass
 
 blackUnits = ['bR','bN','bB','bK','bQ','bB','bN','bR','bp']
 whiteUnits = ['wR','wN','wB','wK','wQ','wB','wN','wR','wp']
@@ -60,21 +92,15 @@ def option_tree(selection):
         whitesTurn = True
         while againstFriend != False:
             print_main_board(gameboard)
-            coordinate = "ABCDEFGH"
+            COORDINATE = "ABCDEFGH"
             current_position = input("Input current position (ex. B5):\n")
             end_position = input('Where would you like to go (ex: C3):\n')
-            piece = gameboard[8 - int(current_position[1])][coordinate.index(current_position[0])]
+            piece = gameboard[8 - int(current_position[1])][COORDINATE.index(current_position[0])]
             if piece in whiteUnits:
                 player = classes[piece]
-                S1 = coordinate.index(current_position[0])
-                S2 = str(f'{coordinate[S1]}{str(int(current_position[1]) + 1)}')
-                if end_position == S2:
-                    player(gameboard, cordPlane, current_position, end_position).single_space()
-                else:
-                    print('Invalid Move')
+            
             elif piece in blackUnits:
-                player = classes[piece]
-                player(gameboard, cordPlane, current_position, end_position).single_space()
+                player = classes[piece()]
             else:
                 print('Invalid Pick')
             #Done on new Patch

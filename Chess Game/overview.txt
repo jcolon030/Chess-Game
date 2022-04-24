@@ -1,0 +1,40 @@
+# main.py overview:
+
+- List of still alive units for both sides
+- A set up gameboard with pieces, backup board for undo feature, coordinate  
+  plane for tracking
+- print menu function 
+- starting menu with options tree
+
+# classes.py overview:
+
+- Class for every piece
+- each class contains moving instructions and rules and output the gameboard updated
+- with also cover attacks, death, and promotion
+
+# in_game_settings.py overview:
+
+- will assign strings to classes 
+- settings can be modified for possible machine learning enchancement
+- turn switch
+
+
+Movement function
+
+column = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+
+        numEquivalentS = column.index(self.s[0])
+        numEquivalentD = column.index(self.d[0]) 
+
+        source = self.gameboard[8 - int(self.s[1])][numEquivalentS]
+        destination = self.gameboard[8 - int(self.d[1])][numEquivalentD]
+
+        S1 = 8 - int(self.s[1])
+        S2 = numEquivalentS
+        D1 = 8 - int(self.d[1])
+        D2 = numEquivalentD
+
+        self.gameboard[S1][S2] = '  '
+        self.gameboard[D1][D2] = source
+        
+        return self.gameboard
